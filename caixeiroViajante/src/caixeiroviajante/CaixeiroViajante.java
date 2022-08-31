@@ -5,6 +5,8 @@ import java.util.ArrayList;
  * @author jadyl
  */
 public class CaixeiroViajante {
+    private int esforcoMin;
+    private int sequencia[];
     public static void main(String[] args) {
         int qtdeVertices, peso, vertice, qtdeArestas;
         int matrizAdj[][] = null;
@@ -50,5 +52,34 @@ public class CaixeiroViajante {
             System.out.println("*******");
         }
         
+    }
+    
+    //*****************ARVORE*********************
+    public void visitaVertice(Vertice vertice){
+        
+    }
+    
+    
+    
+    //*****************GETS E SETS*********************
+    public void setEsforcoMin(int esforcoMin){
+        this.esforcoMin = esforcoMin;
+    }
+    public int getEsforcoMin(){
+        return esforcoMin;
+    }
+    public void setSequencia(int[] sequencia){
+        this.sequencia = sequencia;
+    }
+    public int[] getSequencia(){
+        return sequencia;
+    }
+}
+
+//*****************VÉRTICE*********************
+class Vertice{
+    ArrayList<Vertice> destino;
+    public Vertice(){
+        this.destino = new ArrayList();
     }
 }
