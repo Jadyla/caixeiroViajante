@@ -58,6 +58,8 @@ public class CaixeiroViajante {
         }
         
         Vertice aux = new Vertice();
+        Caminho aux2 = new Caminho();
+        
         aux.setQtdeVertices(qtdeVertices);
         aux.setMatrizAdj(matrizAdj);
         aux.setVisitados(aux.reiniciaVisitados()); //coloca false em todos 
@@ -65,6 +67,8 @@ public class CaixeiroViajante {
         aux.iniciaOpcaoCaminho();
         aux.getOpcaoCaminho()[0] = 0;
         aux.setNumVertice(0);
+        
+        aux2.setQtdeVerticesCaminho(qtdeVertices);
         
         System.out.println("quantidade: " + aux.getQtdeVertices());
         System.out.println("visitados: ");
@@ -77,6 +81,7 @@ public class CaixeiroViajante {
         }
         visitaVertice(aux, aux.getNumVertice());
         
+        aux2.setQtdeVerticesCaminho(qtdeVertices);
     }
     
     //*****************ARVORE*********************
@@ -96,6 +101,12 @@ public class CaixeiroViajante {
             }
             soma = soma + vertice.getMatrizAdj()[vertice.getNumVertice()][0];
             System.out.println(soma);
+            Caminho aux = new Caminho();
+            aux.setQtdeVerticesCaminho(vertice.getQtdeVertices());
+            aux.setEsforco(soma);
+            aux.setCaminho(vertice.getOpcaoCaminho());
+            aux.adicionaCaminho();
+            aux.escolheMelhor();
         }
         
         for (int j = 0; j < vertice.getQtdeVertices(); j++) {
