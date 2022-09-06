@@ -9,11 +9,11 @@ public class Caminho {
     private int caminho[];
     private int esforco;
     private ArrayList<Caminho> listaDeCaminhos;
+    Vertice aux = new Vertice();
     
-    public Caminho(){
-        Vertice aux = new Vertice();
-        this.esforco = esforco;
-        this.caminho = new int[aux.getQtdeVertices()];
+    public Caminho(int esforcoDoCaminho, int[] opcaoDeCaminho){
+        this.esforco = esforcoDoCaminho;
+        this.caminho = opcaoDeCaminho;
     }
     
     public void adicionaCaminho(Caminho novoCaminho){
