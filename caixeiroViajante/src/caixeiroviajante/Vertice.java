@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class Vertice {
     private int qtdeVertices;
-    //***APAGAR***private ArrayList<Vertice> vertices;
     private int matrizAdj[][];
     private Vertice verticePai;
     private boolean visitados[];
@@ -23,9 +22,6 @@ public class Vertice {
     
     
     //*********************MÉTODOS*********************
-    //***APAGAR***public void adicionaVertice(Vertice novoVertice){
-    //***APAGAR***    this.vertices.add(novoVertice);
-    //***APAGAR***}
     public boolean[] copiaVisitados(){
         boolean novoVisitados[] = new boolean[qtdeVertices];
         for (int i = 0; i < qtdeVertices; i++) {
