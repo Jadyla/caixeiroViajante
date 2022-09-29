@@ -6,24 +6,30 @@ import java.util.ArrayList;
  */
 public class CaixeiroViajante {
     public static void main(String[] args) {
-        int qtdeVertices, peso, vertice, qtdeArestas;
+        //******************DEFINIR VALORES*********************
+        int qtdeVertices = 4;
+        
+        
+        int peso, vertice, qtdeArestas;
+        int qtdeVerticesTotal;
+        int matrizAdjInicial[][] = null;
         int matrizAdj[][] = null;
         String caminhos;
         
         //*****************LEITURA*********************
         FileManager fileManager = new FileManager();
-        ArrayList<String> text = fileManager.stringReader("./Teste_1.txt");
+        ArrayList<String> text = fileManager.stringReader("./Teste_3.txt");
         //printando texto da entrada
         //System.out.println(text);
         
-        qtdeVertices = Integer.parseInt(text.get(0));
+        qtdeVerticesTotal = Integer.parseInt(text.get(0));
         //printando quantidade de vertices
-        //System.out.println(qtdeVertices);
+        //System.out.println(qtdeVerticesTotal);
+        matrizAdjInicial = new int[qtdeVerticesTotal][qtdeVerticesTotal];
         matrizAdj = new int[qtdeVertices][qtdeVertices];
         
-        
         ///*****************CRIANDO MATRIZ DE ADJACÊNCIA*********************
-        for (int i = 0; i < qtdeVertices; i++) {
+        for (int i = 0; i < qtdeVerticesTotal; i++) {
             caminhos = text.get(i+1);
             qtdeArestas = (caminhos.split(";")).length;
             String[] semVertice = caminhos.split(" ");
@@ -37,15 +43,36 @@ public class CaixeiroViajante {
                 vertice = Integer.parseInt(semHifen[0]);
                 peso = Integer.parseInt(semPontoEVirgula[0]);
 
-                matrizAdj[i][vertice] = peso;
+                matrizAdjInicial[i][vertice] = peso;
             }
-            for (int j = 0; j < qtdeVertices; j++) {
-                if (matrizAdj[i][j] == 0){
-                    matrizAdj[i][j] = -1;
+            for (int j = 0; j < qtdeVerticesTotal; j++) {
+                if (matrizAdjInicial[i][j] == 0){
+                    matrizAdjInicial[i][j] = -1;
                 }
             }
             
-            matrizAdj[i][i] = -1;
+            matrizAdjInicial[i][i] = -1;
+        }
+        
+        System.out.println("****MATRIZ INICIAL****");
+        for (int i = 0; i < qtdeVerticesTotal; i++) {
+            for (int j = 0; j < qtdeVerticesTotal; j++) {
+                System.out.print(matrizAdjInicial[i][j] + "    ");
+            }
+            System.out.println("  ");
+        }
+        System.out.println("*************");
+        System.out.println(" ");
+        
+        
+        //************INICIANDO VÉRTICE RAIZ**************
+        Vertice aux = new Vertice();
+        Caminho aux2 = new Caminho();
+        
+        for (int i = 0; i < qtdeVertices; i++) {
+            for (int j = 0; j < qtdeVertices; j++) {
+                matrizAdj[i][j] = matrizAdjInicial[i][j];
+            }
         }
         
         System.out.println("****MATRIZ****");
@@ -57,11 +84,6 @@ public class CaixeiroViajante {
         }
         System.out.println("*************");
         System.out.println(" ");
-        
-        
-        //************INICIANDO VÉRTICE RAIZ**************
-        Vertice aux = new Vertice();
-        Caminho aux2 = new Caminho();
         
         aux.setQtdeVertices(qtdeVertices);
         aux.setMatrizAdj(matrizAdj);

@@ -57,7 +57,7 @@ public class Vertice {
             }
         }
     }
-    public int[][] copiaMatrizAdj(){ //funcao para copiar a matriz para o proximo filho, e depois acrescentar a proxima jogada
+    public int[][] copiaMatrizAdj(){
         int matrizNova[][] = new int[qtdeVertices][qtdeVertices];
         for (int i = 0; i < qtdeVertices; i++) {
             for (int j = 0; j < qtdeVertices; j++) {
