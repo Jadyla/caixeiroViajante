@@ -32,7 +32,7 @@ public class Caminho {
     }
     
     public void escolheMelhor(){
-        System.out.println("Quantidade de caminhos possíveis: " + getListaDeCaminhos().size());
+        //System.out.println("Quantidade de caminhos possíveis: " + getListaDeCaminhos().size());
         int menorEsforco = getListaDeCaminhos().get(0).esforco;
         int[] menorCaminho = getListaDeCaminhos().get(0).caminho;
     

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CaixeiroViajante {
     public static void main(String[] args) {
         //******************DEFINIR VALORES*********************
-        int qtdeVertices = 4;
+        int qtdeVertices = 12;
         
         
         int peso, vertice, qtdeArestas;
@@ -95,13 +95,19 @@ public class CaixeiroViajante {
         
         aux2.setQtdeVerticesCaminho(qtdeVertices);
         
-        
+        long tempoInicial = System.currentTimeMillis();
         //************CHAMADA FUNÇÃO RECURSIVA**************
         visitaVertice(aux, aux.getNumVertice(), aux2);
         
         
         //************MÉTODO PARA ANALISAR MELHOR CAMINHO************** (saída será printada lá)
         aux2.escolheMelhor();
+        long tempoFinal = System.currentTimeMillis();
+        int dataSize = 1024 * 1024;
+        Runtime runtime = Runtime.getRuntime();
+        System.out.println("Quantidade de caminhos possíveis: " + aux2.getListaDeCaminhos().size());
+        System.out.println("Tempo de execução: " + (tempoFinal - tempoInicial) + " ms");
+        System.out.println ("Memoria usada: " + (runtime.totalMemory() - runtime.freeMemory()) / dataSize + "MB");
     }
     
     
